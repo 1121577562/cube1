@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF - 8">
+    <meta http - equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 自学前端，加油啊！</title>
+    <!--IMPORT CSS & REM -->
+    <!-- <link rel="stylesheet/less" href="./css/index.less">
+    <script src="./js/less-2.5.3.min.js"></script> -->
+    <link rel="stylesheet" href="./css/index.min.css">
+    <script>
+        ~ function() {
+            // 如果DOM0支持横竖屏切换事件，那么就用横竖屏切换事件，否则使用 resize事件
+            let evt = 'onorientationchange' in window ? 'orientationchange' : 'resize';
+
+            function computed() {
+                let HTML = document.documentElement,
+                    deviceW = HTML.clientWidth,
+                    designW = 750,
+                    ratio = deviceW / designW * 100;
+                if (deviceW >= designW) {
+                    ratio = 100;
+                }
+                HTML.style.fontSize = ratio + 'px';
+            }
+            computed()
+
+            document.addEventListener(evt, computed);
+        }();
+    </script>
+    <!-- prefixfree.min.js处理兼容问题，给CSS3的样式属性加前缀 -->
+    <script src="./js/prefixfree.min.js"></script>
+</head>
+
+<body>
+    <main class="container">
+        <!-- 魔方区域 -->
+        <section class="cubeBox">
+            <!-- ul.cube>li*6>img[src='img/zf_cube$.png'] -->
+            <ul class="cube">
+                <li><img src="img/zf_cube1.png" alt=""></li>
+                <li><img src="img/zf_cube2.png" alt=""></li>
+                <li><img src="img/zf_cube3.png" alt=""></li>
+                <li><img src="img/zf_cube4.png" alt=""></li>
+                <li><img src="img/zf_cube5.png" alt=""></li>
+                <li><img src="img/zf_cube6.png" alt=""></li>
+            </ul>
+            <span class="tip"></span>
+        </section>
+
+        <!-- 滑屏区域 -->
+        <section class="swiperBox">
+            <a href="javascript:;" class="returnBox"></a>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide page1">
+                        <dl class="baseInfo">
+                            <dt>自我介绍</dt>
+                            <dd><em>01</em>
+                                <p>姓名：汪豪</p>
+                            </dd>
+                            <dd><em>02</em>
+                                <p>姓别：你想想</p>
+                            </dd>
+                            <dd><em>03</em>
+                                <p>年龄：young man</p>
+                            </dd>
+                            <dd><em>04</em>
+                                <p>户籍：湖北省襄阳市</p>
+                            </dd>
+                            <dd><em>05</em>
+                                <p>工作年限：1年</p>
+                            </dd>
+                            <dd><em>06</em>
+                                <p> 学历：专科</p>
+                            </dd>
+                            <dd><em>07</em>
+                                <p> 邮箱：2763571846@qq.com</p>
+                            </dd>
+                            <dd><em>08</em>
+                                <p>电话：15623966778</p>
+                            </dd>
+                            <dd><em>09</em>
+                                <p>兴趣爱好：读书</p>
+                            </dd>
+                            <dd><em>10</em>
+                                <p> 擅长：javascript(ES6)、AJAX、VUE、REACT</p>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="swiper-slide page2">
+                        <h3>课程体系</h3>
+                        <img src="img/zf_course1.png" alt="">
+                        <img src="img/zf_course2.png" alt="">
+                        <img src="img/zf_course3.png" alt="">
+                        <img src="img/zf_course4.png" alt="">
+                        <img src="img/zf_course5.png" alt="">
+                        <img src="img/zf_course6.png" alt="">
+                        <img src="img/zf_course.png" alt="">
+                    </div>
+                    <div class="swiper-slide page3">
+                        <img src="./img/zf_teacherTip.png" alt="" class="title">
+                        <ul class="teacher-info clearfix">
+                            <li>
+                                <img src="./img/zf_teacher1.png" alt="">
+                                <h4>周啸天</h4>
+                                <p>珠峰培训教学总监，曾任职腾讯高级前端开发工程师</p>
+                            </li>
+                            <li>
+                                <img src="./img/zf_teacher2.png" alt="">
+                                <h4>张仁阳</h4>
+                                <p>珠峰培训教学总监，曾任职腾讯高级前端开发工程师</p>
+                            </li>
+                            <li>
+                                <img src="./img/zf_teacher3.jpg" alt="">
+                                <h4>姜文</h4>
+                                <p>珠峰培训教学总监，曾任职腾讯高级前端开发工程师</p>
+                            </li>
+                            <li>
+                                <img src="./img/zf_teacher4.png" alt="">
+                                <h4>田喜</h4>
+                                <p>珠峰培训教学总监，曾任职腾讯高级前端开发工程师</p>
+                            </li>
+                            <li>
+                                <img src="./img/zf_teacher5.png" alt="">
+                                <h4>张亚涛</h4>
+                                <p>珠峰培训教学总监，曾任职腾讯高级前端开发工程师</p>
+                            </li>
+                            <li>
+                                <img src="./img/zf_teacher6.png" alt="">
+                                <h4>郭永峰</h4>
+                                <p>珠峰培训教学总监，曾任职腾讯高级前端开发工程师</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide page4">
+                        4
+                    </div>
+                    <div class="swiper-slide page5">
+                        5
+                    </div>
+                    <div class="swiper-slide page6">
+                        6
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 音乐区域 -->
+        <section class="musicBox">
+            <!-- audio支持的格式：mp3/ogg/wav/m3u8直播流 -->
+            <audio class="musicAudio" src="./music/myDream.m4a" loop preload="none"></audio>
+            <a href="javascript:;" class="musicIcon"></a>
+        </section>
+    </main>
+
+    <!--IMPORT JS -->
+    <script src="./js/zepto.min.js"></script>
+    <script src="./js/swiper-3.4.2.min.js"></script>
+    <script src="./js/makisu.min.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
+
+
+<!-- 兔展、易企秀 -->

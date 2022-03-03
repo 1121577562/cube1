@@ -1,0 +1,480 @@
+@import "./reset.min.less";
+@import "./swiper.less";
+// @import "./animate.min.less";
+@import (reference)"./common.less";
+
+
+@keyframes bounceInLeft {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+      opacity: 0;
+      transform: translate3d(-3000px, 0, 0);
+  }
+
+  60% {
+      opacity: 1;
+      transform: translate3d(25px, 0, 0);
+  }
+
+  75% {
+      transform: translate3d(-10px, 0, 0);
+  }
+
+  90% {
+      transform: translate3d(5px, 0, 0);
+  }
+
+  to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+  }
+}
+
+@keyframes shake {
+  from,
+  to {
+      transform: translate3d(0, 0, 0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+      transform: translate3d(-10px, 0, 0);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+      transform: translate3d(10px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes tada {
+  from {
+      transform: scale3d(1, 1, 1);
+  }
+
+  10%,
+  20% {
+      transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%,
+  50%,
+  70%,
+  90% {
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%,
+  60%,
+  80% {
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  to {
+      transform: scale3d(1, 1, 1);
+      opacity: 1;
+  }
+}
+
+@keyframes musicMove {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+
+
+
+
+
+/* 基础样式 */
+html {
+  //=>规定在750PX的设计稿中：1rem = 100px
+  font-size: 100px;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: #e4e4e4; 
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 750px;
+  height: 100%;
+}
+
+.cubeBox, 
+.swiperBox {
+  display: none;
+  height: 100%;
+}
+
+
+/* 魔方区域 */
+.cubeBox {
+  position: relative;
+  background: url(../img/zf_cubeBg.jpg) no-repeat center center;
+  background-size: cover;
+
+  //=>提示文字
+  .tip {
+    width: 3.94rem;
+    height: 0.44rem;
+    bottom: .5rem;
+    .BG_IMAGE('zf_cubeTip.png');
+    .CENTER_X(3.94);
+  }
+
+  //=>魔方盒子
+  .cube {
+    width: 5.1rem;
+    height: 5.1rem;
+    .CENTER(5.1, 5.1);
+
+    li {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5.1rem;
+      height: 5.1rem;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+    //=>魔方盒子的3D处理
+    //1.给3D变形元素所在的容器(舞台) 设置视距，防止"一叶障目"
+    perspective: 2000px;
+
+    .cube {
+      //2.给需要3D变形的元素设置3D变形特征
+      transform-style: preserve-3d;
+      transition: transform .3s linear;
+      // transform: scale(0.6) rotateX(-30deg) rotateY(45deg);
+
+      //3.控制每一个页面的移动和旋转
+      li:nth-child(1) {
+        transform: translateZ(2.55rem);
+      }
+
+      li:nth-child(2) {
+        transform: translateZ(-2.55rem) rotateY(180deg);
+      }
+
+      li:nth-child(3) {
+        transform: translateX(-2.55rem) rotateY(-90deg);
+      }
+      li:nth-child(4) {
+        transform: translateX(2.55rem) rotateY(90deg);
+      }
+
+      li:nth-child(5) {
+        transform: translateY(-2.55rem) rotateX(90deg);
+      }
+
+      li:nth-child(6) {
+        transform: translateY(2.55rem) rotateX(-90deg);
+      }
+    }
+}
+
+/* 滑屏区域 */
+.swiperBox {
+  .returnBox {
+    position: absolute;
+    top: .2rem;
+    right: .2rem;
+    z-index: 999;
+    width: .64rem;
+    height: .75rem;
+    .BG_IMAGE('zf_return.png');
+  }
+
+  .swiper-container, 
+  .swiper-slide {
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+  }
+
+  .page1 {
+    background-color: #fff;
+    perspective: 2000px;
+
+    .baseInfo {
+      box-sizing: border-box;
+      width: 6rem;
+      height: 6.6rem;
+      transform-style: preserve-3d;
+      .CENTER(6, 6.6);
+
+      dt,
+      dd {
+        box-sizing: border-box;
+        height: 0.6rem;
+        line-height: 0.6rem;
+        border-top: .02rem dashed rgba(255, 255, 255, .3);
+        background-color: #8FBB4C;
+        font-size: .28rem;
+      }
+
+      dt {
+        text-align: center;
+        font-size: .4rem;
+        color:yellow;
+      }
+
+      dd {
+        position: relative;
+        padding-left: .66rem;
+
+        em {
+          width: .36rem;
+          height: .42rem;
+          line-height: .42rem;
+          text-align: center;
+          color: #fff;
+          font-size: .2rem;
+          font-style: normal;
+          left: .30rem; 
+          z-index: 999;
+          .BG_IMAGE('zf_outline.png');
+          .CENTER_Y(.42);
+        }
+
+        p {
+          position: relative;
+          z-index: 999;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+
+  .page2 {
+    background-color: #fff9c1;
+
+    h3 {
+      position: absolute;
+      top: .5rem;
+      left: 0;
+      width: 100%;
+      line-height: .9rem;
+      text-align: center;
+      font-size: .6rem;
+      font-weight: 400;
+      opacity: 0;
+    }
+
+    img {
+      width: 1rem;
+      height: 1rem;
+      .CENTER(1, 1);
+      opacity: 0;
+
+      //=>把PAGE2中按照IMG进行分组，找到分组中的第一个
+      // .page2 img:nth-of-type(1) {}
+      &:nth-of-type(7) {
+        width: 1.32rem;
+        height: 1.7rem;
+        .CENTER(1.32, 1.7);
+      }
+    }
+
+  }
+  //=>设置第二页的动画
+  #page2 {
+    h3 {
+      animation: bounceInLeft 1s both;
+    }
+
+    img {
+      &:nth-of-type(7) {
+        animation: shake 1s both;
+      }
+
+      &:nth-of-type(1) {
+        margin-top: unit(-.5-(2.4), rem);
+      }
+
+      &:nth-of-type(2) {
+        margin-top: -1.7rem;
+        margin-left: 1.5rem;
+      }
+
+      &:nth-of-type(3) {
+        margin-top: .7rem;
+        margin-left: 1.5rem;
+      }
+
+      &:nth-of-type(4) {
+        margin-top: 1.9rem;
+      }
+
+      
+      &:nth-of-type(5) {
+        margin-top: .7rem;
+        margin-left: -2.5rem;
+      }
+
+      &:nth-of-type(6) {
+        margin-top: -1.7rem;
+        margin-left: -2.5rem;
+      }
+
+
+      transition: .5s;
+      opacity: 1;
+      animation: tada .1s .5s infinite;
+    }
+  }
+
+  .page3 {
+    background-color: #E45454;
+
+    .title {
+      width: 3.82rem;
+      height: 1.41rem;
+      margin-top: .5rem;
+      .CENTER_X(3.82);
+    }
+
+    .teacher-info {
+      position: relative;
+      margin-top: 2.5rem;
+      width: 5.7rem;
+      .CENTER_X(5.7);
+
+      li {
+        opacity: 0;
+        float: left;
+        margin: .2rem 0;
+        width: 32%;
+        height: 3rem;
+        color: #fff;
+        font-size: 0.24rem;
+        text-align: center;
+
+        img {
+          width: 1.2rem;
+          height: 1.2rem;
+          border-radius: 50%;
+        }
+
+        h4 {
+          font-weight: 400;
+          margin: 5px 0;
+          text-align: center;
+        }
+
+        p {
+          text-align: left;
+        }
+
+        &:nth-child(2) {
+          margin: 2%;
+        }
+
+        &:nth-child(5) {
+          margin: 2%;
+        }
+      }
+      
+    }
+
+    
+  }
+
+  #page3 {
+    .title {
+      animation: bounceInLeft .5s .3s both;
+    }
+
+    .teacher-info {
+      li {
+        transform: translateX(0px);
+        animation: shake .5s both;
+      }
+    }
+    
+  }
+
+
+
+  .page4 {
+    background-color: #FAC471;
+  }
+
+  .page5 {
+    background-color: #FBFFE8;
+  }
+
+  .page6 {
+    background-color: #5975FF;
+  }
+
+}
+
+
+/* 
+  滑屏页面中的帧动画
+    1.先写每一页的结构和基础样式 (写在.page?下)
+    2.让所有后续需要运动的元素初始透明度为零
+    3.所有运动的动画 (大部分动画在animate.css中都可以找到，把最后一帧透明度设置为1) 我们写在#page? 下(ID选择器的优先级高)
+    4.在SWIPER切换的时候，运动到当前页面，就给当前页面设置一个ID等于PAGE?, 其余页面的ID都移除掉即可
+*/
+
+
+
+
+
+/* 音乐区域 */
+.musicBox {
+  .musicAudio {
+    display: none;
+  }
+
+  .musicIcon {
+    display: none;
+    position: absolute;
+    top: .2rem;
+    left: .2rem;
+    z-index: 1234;
+    width: .6rem;
+    height: .6rem;
+    .BG_IMAGE('music.svg');
+
+
+    //=>.musicIcon.move
+    &.move {
+      animation: musicMove 1s linear infinite;
+    }
+  }
+
+
+}

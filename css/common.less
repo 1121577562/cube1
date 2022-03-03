@@ -1,0 +1,24 @@
+.BG_IMAGE(@URL) {
+  background: url('../img/@{URL}') no-repeat center center;
+  background-size: 100% 100%;
+}
+
+.CENTER(@W, @H) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: unit((-@H/2), rem) 0 0 unit((-@W/2), rem);
+  //需要给 unit函数中用到的变量，使用括号括起来
+}
+
+.CENTER_X(@W) {
+  position: absolute;
+  left: 50%;
+  margin-left:unit((-@W/2), rem);
+}
+
+.CENTER_Y(@H) {
+  position: absolute;
+  top: 50%;
+  margin: unit((-@H/2), rem);
+}
